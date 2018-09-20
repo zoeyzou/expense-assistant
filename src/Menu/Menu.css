@@ -1,0 +1,14 @@
+@import url('../common_styles/color.css');
+
+.Menu {
+  min-width: 300px;
+  background: var(--menu-background);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.Menu nav {
+  flex-grow: 1;
+}

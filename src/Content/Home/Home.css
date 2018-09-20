@@ -1,0 +1,19 @@
+@import url('../../common_styles/color.css');
+@import url('../../common_styles/font.css');
+
+.Home {
+  width: 60%;
+  background: var(--card-background);
+  border-color: var(--primary);
+  border-width: 11px;
+  -moz-border-image: url(http://tobias-reinhardt.de/img/frame.png) 11 stretch;
+  border-image: url(http://tobias-reinhardt.de/img/frame.png) 11 stretch;
+  border-style: solid;
+  padding: 10% 5%;
+  font-family: var(--card-font);
+  font-size: 24px;
+}
+
+.Home img {
+  width: 100px;
+}

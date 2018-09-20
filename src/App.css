@@ -1,0 +1,11 @@
+@import url(./common_styles/font.css);
+
+.App {
+  text-align: center;
+  font-family: var(--content-font);
+  display: flex;
+  flex-flow: row;
+  align-items: stretch;
+  height: 100%;
+}
+

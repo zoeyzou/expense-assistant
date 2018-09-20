@@ -1,0 +1,36 @@
+@import url('../../../common_styles/color.css');
+@import url('../../../common_styles/font.css');
+
+.IconButton {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  background: var(--button-background);
+  color: var(--primary);
+  transition: all .3s ease-out;
+
+  display: flex;
+  align-items: center;
+}
+
+.active,
+.IconButton:hover {
+  transition: all .3s ease-out;
+  background: var(--button-background-active);
+  color: var(--button-color-active);
+}
+
+.IconButton img {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  padding-left: 15px;
+  padding-right:10px;
+}
+
+.IconButton span {
+  display: inline-block;
+  font-size: 24px;
+  font-family: var(--brand-font);
+}

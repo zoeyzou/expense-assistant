@@ -1,0 +1,22 @@
+@import url('../../common_styles/font.css');
+@import url('../../common_styles/color.css');
+
+.Avatar {
+  font-family: var(--content-font);
+  margin-top: 40px;
+}
+
+.ImgFrame {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  border: 2px solid white;
+  background: url('../../asset/avatar.png') center;
+  background-size: 85px;
+  margin: 10px auto 0;
+}
+
+.Avatar p {
+  color: var(--primary);
+  font-size: 20px;
+}

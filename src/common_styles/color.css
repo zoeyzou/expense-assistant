@@ -1,0 +1,9 @@
+:root {
+  --primary: #FFEEE4;
+  --background: #FFEEE4;
+  --menu-background: #CE6D39;
+  --button-background: #F17F42;
+  --button-background-active: #E9A784;
+  --button-color-active: #CE6D39;
+  --card-background: rgba(255, 255, 255, 0.6);
+}
