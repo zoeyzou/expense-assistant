@@ -9,11 +9,15 @@
   -moz-border-image: url(http://tobias-reinhardt.de/img/frame.png) 11 stretch;
   border-image: url(http://tobias-reinhardt.de/img/frame.png) 11 stretch;
   border-style: solid;
-  padding: 10% 5%;
+  padding: 5%;
   font-family: var(--card-font);
-  font-size: 24px;
+  font-size: 26px;
 }
 
 .Home img {
-  width: 100px;
+  width: 120px;
+}
+
+.emph {
+  font-size: 30px;
 }
