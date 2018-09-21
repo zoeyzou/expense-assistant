@@ -1,0 +1,14 @@
+@import url('../../../common_styles/font.css');
+@import url('../../../common_styles/color.css');
+
+.SelectButton {
+  padding: 5px;
+  border: 2px solid var(--button-background);
+  border-radius: 10px;
+  background: var(--primary);
+  color: var(--button-background);
+  font-size: 16px;
+  font-family: var(--content-font);
+  outline-width: 0;
+}
+

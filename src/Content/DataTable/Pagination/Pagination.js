@@ -1,21 +1,31 @@
-import React from 'react'
+import React from 'react';
+
+import styles from './Pagination.css';
+import SelectButton from '../SelectButton/SelectButton';
 
 const Pagination = (props) => {
+  const options = [10, 20, 30];
+
+  const changeRowsHandler = (event) => {
+
+  }
+
   return (
-    <div class="c-pagination">
-      <div class="c-pagination__rows">
-        <span class="c-pagination__text">Rows per page:</span>
-        <select>
-          <option>10</option>
-          <option>20</option>
-        </select>
+    <div className={styles.Pagination}>
+      <div>
+        <span>Rows per page: </span>
+        <SelectButton
+          options={options}
+          onChange={(event) => changeRowsHandler(event)}
+
+          />
       </div>
-      <div class="c-pagination__controls">
-        <div class="c-pagination__controls-button"><i class="fas fa-angle-left"></i></div>
-        <div class="c-pagination__controls-button"><i class="fas fa-angle-right"></i></div>
+      <div className={styles.arrows}>
+        <div><i className="fas fa-angle-left"></i></div>
+        <div><i className="fas fa-angle-right"></i></div>
       </div>
   </div>
   )
 }
 
-export default Pagination
+export default Pagination;

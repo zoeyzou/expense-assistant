@@ -1,8 +1,10 @@
 import React from 'react';
 
-const TableTitle = () => {
+import styles from './TableTitle.css';
+
+const TableTitle = (props) => {
   return (
-    <h2>All Expenses</h2>
+    <h2 className={styles.TableTitle}>{props.title}</h2>
   )
 };
 

@@ -1,0 +1,25 @@
+@import url('../../../common_styles/color.css');
+@import url('../../../common_styles/font.css');
+
+.NameSearch {
+  font-family: var(--content-font);
+  display: inline-block;
+}
+
+.nameInput {
+  font-size: 16px;
+  padding: 5px 10px;
+  height: 20px;
+  color: var(--button-background);
+  border: none;
+  background: none;
+  border-bottom: 1px solid grey;
+  border-left: 3px solid var(--button-background);
+  outline-width: 0;
+  transition: all .3s ease-in;
+}
+
+.nameInput:focus {
+  transition: all .3s ease-in;
+  border-bottom: 1px solid var(--button-background);
+}

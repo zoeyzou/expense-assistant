@@ -2,8 +2,27 @@
 
 .DataTable {
   background: var(--card-background);
+  width: 80%;
+}
+
+.filters {
+  padding: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .table {
-  color: red;
+  border-collapse: collapse;
+  width: 80%
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
 }

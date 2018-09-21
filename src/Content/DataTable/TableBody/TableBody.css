@@ -1,8 +1,38 @@
-.TableBody {
+@import url('../../../common_styles/color.css');
 
+.TableBody {
+  
 }
 
 .info {
   width: 25px;
   height: 25px;
 }
+
+.bodyRow:nth-of-type(even) {
+  background: var(--primary);
+}
+
+.bodyRow {
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.bodyRow td {
+  padding: 3px 10px;
+  font-size: 14px;
+}
+
+.bodyRow:hover {
+  background: var(--button-background-active);
+  color: var(--primary);
+  transition: all .2s ease;
+
+}
+
+.imgHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
