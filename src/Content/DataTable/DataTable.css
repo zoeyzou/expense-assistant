@@ -3,3 +3,7 @@
 .DataTable {
   background: var(--card-background);
 }
+
+.table {
+  color: red;
+}
