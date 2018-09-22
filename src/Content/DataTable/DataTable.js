@@ -57,6 +57,7 @@ const DataTable = (props) => {
           <SelectButton
             options={[...new Set((props.expenses.map(expense => expense.amount.currency)).concat([defaultSelect]))]}
             defaultOption={defaultSelect}
+            theme="major"
           />
         </div>
       </header>

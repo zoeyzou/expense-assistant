@@ -2,21 +2,27 @@
 @import url('../../../common_styles/color.css');
 
 .SelectButton {
-  padding: 5px;
-  border: 2px solid var(--button-background);
-  border-radius: 10px;
-  background: var(--primary);
-  color: var(--button-background);
-  font-size: 16px;
+  border-style: solid;
   font-family: var(--content-font);
   outline-width: 0;
 }
 
 .major {
-  
+  padding: 5px;
+  font-size: var(--standard-size);
+  border-radius: calc(var(--standard-size) * 0.5);
+  background: var(--primary);
+  color: var(--button-background);
+  border-color:var(--button-background);
+  border-width: 2px;
 }
 
-.red {
-  color: red;
-  background: orange;
+.minor {
+  padding: 3px;
+  font-size: calc(var(--standard-size)*0.8);
+  border-radius: calc(var(--standard-size)*0.4);
+  color: var(--button-color-active);
+  background: var(--primary);
+  border-color:var(--button-color-active);
+  border-width: 1px;
 }

@@ -7,16 +7,18 @@ const SelectButton = ({options, theme, defaultOption  = options[0]}) => {
     <option key={item} value={item}>{item}</option>
   ))
 
-  const themeClass = {
-    'red': styles.red,
+  const type = {
+    'major': styles.major,
+    'minor': styles.minor
   }[theme];
+
   // if (!defaultOption) {
   //   defaultOption = props.options[0];
   // }
 
 
   return (
-    <select className={`${styles.SelectButton} ${themeClass}`} value={defaultOption}>
+    <select className={`${styles.SelectButton} ${type}`} value={defaultOption}>
       {options}
     </select>
   )

@@ -17,7 +17,7 @@ const Pagination = (props) => {
         <SelectButton
           options={options}
           onChange={(event) => changeRowsHandler(event)}
-          theme='red'
+          theme='minor'
           />
       </div>
       <div className={styles.arrows}>
