@@ -1,7 +1,8 @@
 @import url('../../../common_styles/color.css');
 @import url('../../../common_styles/font.css');
 
-.IconButton {
+.NavButton {
+  box-sizing: border-box;
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -14,14 +15,16 @@
   align-items: center;
 }
 
+
+
 .active,
-.IconButton:hover {
+.NavButton:hover {
   transition: all .3s ease-out;
   background: var(--button-background-active);
   color: var(--button-color-active);
 }
 
-.IconButton img {
+.NavButton img {
   display: inline-block;
   width: 30px;
   height: 30px;
@@ -29,7 +32,7 @@
   padding-right:10px;
 }
 
-.IconButton span {
+.NavButton span {
   display: inline-block;
   font-size: 24px;
   font-family: var(--brand-font);

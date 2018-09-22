@@ -2,18 +2,21 @@ import React from 'react';
 
 import styles from './SelectButton.css';
 
-const SelectButton = (props) => {
-  const options = props.options.map(item => (
+const SelectButton = ({options, theme, defaultOption  = options[0]}) => {
+  options = options.map(item => (
     <option key={item} value={item}>{item}</option>
   ))
-  
-  let defaultOption = props.defaultOption;
-  if (!defaultOption) {
-    defaultOption = props.options[0];
-  }
+
+  const themeClass = {
+    'red': styles.red,
+  }[theme];
+  // if (!defaultOption) {
+  //   defaultOption = props.options[0];
+  // }
+
 
   return (
-    <select className={styles.SelectButton} value={defaultOption}>
+    <select className={`${styles.SelectButton} ${themeClass}`} value={defaultOption}>
       {options}
     </select>
   )
