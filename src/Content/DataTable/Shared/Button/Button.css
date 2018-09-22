@@ -1,0 +1,37 @@
+@import url('../../../common_styles/font.css');
+@import url('../../../common_styles/color.css');
+
+.Button {
+  color: var(--primary);
+  font-family: var(--brand-font);
+  font-size: var(--standard-size);
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--button-background-active);
+  border-radius: 5px;
+  padding: 5px;
+  width: 100px;
+  transition: all .2s ease;
+}
+
+.confirm {
+  background: var(--button-color-active);
+}
+
+.cancel {
+  background: var(--button-background);
+}
+
+
+.confirm:hover,
+.cancel:hover {
+  background: var(--primary);
+}
+
+.confirm:hover {
+  color: var(--button-color-active);
+}
+
+.cancel:hover {
+  color: var(--button-background);
+}

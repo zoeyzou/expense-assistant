@@ -1,7 +1,7 @@
-@import url('../../../common_styles/font.css');
-@import url('../../../common_styles/color.css');
+@import url('../../../../common_styles/font.css');
+@import url('../../../../common_styles/color.css');
 
-.SelectButton {
+.SelectDropdown {
   border-style: solid;
   font-family: var(--content-font);
   outline-width: 0;

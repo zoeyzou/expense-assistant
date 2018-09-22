@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './TableBody.css';
-import infoIcon from '../../../asset/info1.png';
+import infoIcon from '../../../../../asset/info1.png';
 
 const TableBody = (props) => {
   console.log(props);
@@ -9,8 +9,8 @@ const TableBody = (props) => {
     <tr key={expense.id} className={styles.bodyRow}>
       <td>{expense.date.slice(0, 10)}</td>
       <td>{expense.user.first} {expense.user.last}</td>
-      <td>{expense.amount.value}{expense.amount.currency}</td>
-      <td className={styles.imgHolder}><img src={infoIcon} className={styles.info} /></td>
+      <td>{expense.amount.value} {expense.amount.currency}</td>
+      <td className={styles.imgHolder}><img src={infoIcon} className={styles.info} alt="info icon" /></td>
     </tr>
   ));
 

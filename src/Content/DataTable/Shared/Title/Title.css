@@ -1,0 +1,9 @@
+@import url('../../../../common_styles/color.css');
+@import url('../../../../common_styles/font.css');
+
+.Title {
+  color: var(--menu-background);
+  font-family: var(--brand-font);
+  text-transform: uppercase;
+  font-size: var(--title-size);
+}

@@ -1,14 +1,13 @@
 @import url('../../common_styles/color.css');
 
-.DataTable {
+.Layout {
   background: var(--card-background);
   width: 80%;
+  margin: 5% auto;
 }
 
-.filters {
-  padding: 5px;
-  display: flex;
-  justify-content: space-around;
+.header {
+  padding: 10px 0 0;
 }
 
 .main {
@@ -17,12 +16,8 @@
   margin-top: 10px;
 }
 
-.table {
-  border-collapse: collapse;
-  width: 80%
-}
-
 .footer {
   display: flex;
   justify-content: center;
+  padding: 10px 0 16px;
 }

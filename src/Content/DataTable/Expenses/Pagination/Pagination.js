@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './Pagination.css';
-import SelectButton from '../SelectButton/SelectButton';
+import SelectDropdown from '../../Shared/SelectDropdown/SelectDropdown';
 
 const Pagination = (props) => {
   const options = [10, 20, 30];
@@ -14,7 +14,7 @@ const Pagination = (props) => {
     <div className={styles.Pagination}>
       <div>
         <span>Rows per page: </span>
-        <SelectButton
+        <SelectDropdown
           options={options}
           onChange={(event) => changeRowsHandler(event)}
           theme='minor'
