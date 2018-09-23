@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { ExpensesContext } from '../../../Contexts/ExpensesContexts';
 import Layout from '../../Layout/Layout';
 import ExpensesHeader from './ExpensesHeader/ExpensesHeader';
 import ExpensesTable from './ExpensesTable/ExpensesTable';
@@ -18,6 +19,7 @@ const Expenses = (props) => {
           options={[...new Set((props.expenses.map(expense => expense.amount.currency)).concat([defaultSelect]))]}
           defaultOption={defaultSelect}
           theme="major"
+          filterByName={props.nameFilter}
         />
       }
       footer={<Pagination />}

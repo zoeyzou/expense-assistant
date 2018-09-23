@@ -6,8 +6,19 @@ import styles from './Content.css';
 import Home from './Home/Home';
 import Expense from './DataTable/Expense/Expense';
 import Expenses from './DataTable/Expenses/Expenses';
+import { ExpensesContext } from '../Contexts/ExpensesContexts';
 
 export class Content extends Component {
+
+  state = {
+    limit: 30,
+    offset: 0,
+    isLoading: true,
+    expenses: [],
+    total: 0,
+
+    data: ""
+  };
 
   componentDidMount() {
     this.setState({isLoading: true});
@@ -17,14 +28,10 @@ export class Content extends Component {
         this.setState({expenses: response.data.expenses, isLoading: false, total: response.data.total});
         
       });
-  }
+  };
 
-  state = {
-    limit: 30,
-    offset: 0,
-    isLoading: true,
-    expenses: [],
-    total: 0
+  nameFilterHandler = () => {
+    console.log('name changed');
   };
 
   render() {
@@ -36,32 +43,35 @@ export class Content extends Component {
     }
 
     return (
-      <div className={styles.Content}>
-        <Switch>
-          <Route exact path="/" render={p => (
-            <Home total={total} />
-          )}/>
-          <Route exact path="/expenses" render={p => (
-            <Expenses expenses={expenses} />
-          )}/>
-          <Route exact path="/expenses/add" render={p => (
-            <Home total={total} />
-          )} />
-          <Route exact path="/expenses/:id" render={p => (
-            <Expense id={p.match.params.id}/>
-          )}/>
-          <Route exact path="/setting" render={p => (
-            <Home total={total} />
-          )} />
-          <Route path="/" render={p => (
-            <Redirect to="/"/>
-          )}/>
-        </Switch>
-        
-      </div>
+      <ExpensesContext.Provider value={{data: this.state.data, changeData: (newData) => this.setState({ data: newData })}}>
+        <div className={styles.Content}>
+          <Switch>
+            <Route exact path="/" render={p => (
+              <Home total={total} />
+            )}/>
+            <Route exact path="/expenses" render={p => (
+              <Expenses
+                expenses={expenses}
+                nameFilter={this.nameFilterHandler} />
+            )}/>
+            <Route exact path="/expenses/add" render={p => (
+              <Home total={total} />
+            )} />
+            <Route exact path="/expenses/:id" render={p => (
+              <Expense id={p.match.params.id}/>
+            )}/>
+            <Route exact path="/setting" render={p => (
+              <Home total={total} />
+            )} />
+            <Route path="/" render={p => (
+              <Redirect to="/"/>
+            )}/>
+          </Switch>
+          
+        </div>
+      </ExpensesContext.Provider>
     )
   }
 }
 
-export default Content
 
