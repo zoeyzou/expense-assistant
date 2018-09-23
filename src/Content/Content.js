@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 
 import styles from './Content.css';
 import Home from './Home/Home';
-import ExpenseData from './DataTable/ExpenseData/ExpenseData';
+import Expense from './DataTable/Expense/Expense';
 import Expenses from './DataTable/Expenses/Expenses';
 
 export class Content extends Component {
@@ -48,7 +48,7 @@ export class Content extends Component {
             <Home total={total} />
           )} />
           <Route exact path="/expenses/:id" render={p => (
-            <ExpenseData id={p.match.params.id}/>
+            <Expense id={p.match.params.id}/>
           )}/>
           <Route exact path="/setting" render={p => (
             <Home total={total} />

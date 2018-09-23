@@ -2,7 +2,13 @@
 @import url('../../common_styles/font.css');
 
 .Home {
-  width: 60%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.wrapper {
   background: var(--card-background);
   border-color: var(--primary);
   border-width: 11px;
@@ -10,6 +16,7 @@
   border-image: url(http://tobias-reinhardt.de/img/frame.png) 11 stretch;
   border-style: solid;
   padding: 5%;
+  margin: 10vh auto;
   font-family: var(--card-font);
   font-size: 26px;
 }

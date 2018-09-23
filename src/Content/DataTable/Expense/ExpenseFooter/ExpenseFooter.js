@@ -1,8 +1,8 @@
 import React from 'react';
 
 import styles from './ExpenseFooter.css';
-import buttonStyles from '../../Button/Button.css';
-import Button from '../../Button/Button';
+import buttonStyles from '../../Shared/Button/Button.css';
+import Button from '../../Shared/Button/Button';
 
 const ExpenseFooter = (Props) => {
   return (

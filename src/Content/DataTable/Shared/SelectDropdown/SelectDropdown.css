@@ -5,6 +5,7 @@
   border-style: solid;
   font-family: var(--content-font);
   outline-width: 0;
+  transition: all .2s ease;
 }
 
 .major {
@@ -17,6 +18,16 @@
   border-width: 2px;
 }
 
+.major:hover,
+.minor:hover {
+  color: var(--primary);
+  transition: all .2s ease;
+}
+
+.major:hover {
+  background: var(--button-background);
+}
+
 .minor {
   padding: 3px;
   font-size: calc(var(--standard-size)*0.8);
@@ -25,4 +36,8 @@
   background: var(--primary);
   border-color:var(--button-color-active);
   border-width: 1px;
+}
+
+.minor:hover {
+  background: var(--button-color-active);
 }
