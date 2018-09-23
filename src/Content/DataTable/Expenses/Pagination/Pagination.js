@@ -27,10 +27,16 @@ const Pagination = (props) => {
                   />
               </div>
               <div className={styles.arrows}>
-                <div onClick={context.toNextPage}>
+                <div
+                  className={!context.pageOffset ? styles.hidden : ''}
+                  onClick={() => context.changePage('previous')}
+                >
                   <i className="fas fa-angle-left"></i>
                 </div>
-                <div onClick={context.toPreviousPage}>
+                <div
+                  className={context.pageOffset === Math.ceil(context.totalExpenses / 10) ? styles.hidden : ''}
+                  onClick={() => context.changePage('next')}
+                >
                   <i className="fas fa-angle-right"></i>
                 </div>
               </div>

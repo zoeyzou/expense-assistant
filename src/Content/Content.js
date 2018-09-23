@@ -58,6 +58,21 @@ export class Content extends Component {
     const url = `http://localhost:3000/expenses?limit=${newPageRow}&offset=${this.state.pageOffset}`;
     this.getAndFilterExpensesFromApi(url);
   }
+
+  changePageHandler(action) {
+    let pageChange;
+    action === 'previous' ? pageChange = -1 : pageChange = 1;
+
+    this.setState(
+      prevState => ({
+        pageOffset: prevState.pageOffset + pageChange
+      }), 
+      () => {
+        const url = `http://localhost:3000/expenses?limit=${this.state.pageLimit}&offset=${this.state.pageOffset}`;
+        this.getAndFilterExpensesFromApi(url);
+      }
+    )
+  }
   
   render() {
     const {
@@ -83,6 +98,8 @@ export class Content extends Component {
           filteredExpenses: filteredExpenses || expenses,
           pageLimit: pageLimit,
           isLoading: isLoading,
+          pageOffset: pageOffset,
+          totalExpenses: total,
           changeFilter: (keyword) => this.setState({
             filter: keyword,
             filteredExpenses: this.filterExpensesHandler(expenses, keyword, currency)
@@ -98,6 +115,7 @@ export class Content extends Component {
               pageLimit: newPageRows
             });
           },
+          changePage: (pageChange) => this.changePageHandler(pageChange)
         }
       }>
         <div className={styles.Content}>
