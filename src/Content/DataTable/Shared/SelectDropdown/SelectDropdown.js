@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './SelectDropdown.css';
 
-const SelectDropdown = ({options, theme, defaultOption  = options[0]}) => {
+export const SelectDropdown = ({options, theme, onChange, currentOption}) => {
   options = options.map(item => (
     <option key={item} value={item}>{item}</option>
   ));
@@ -12,11 +12,17 @@ const SelectDropdown = ({options, theme, defaultOption  = options[0]}) => {
     'minor': styles.minor
   }[theme];
 
+  const changeHandler = (e) => {
+    onChange(e.target.value);
+  };
+
   return (
-    <select className={`${styles.SelectDropdown} ${type}`} value={defaultOption}>
+    <select
+      className={`${styles.SelectDropdown} ${type}`}
+      value={currentOption}
+      onChange={e => changeHandler(e)}
+    >
       {options}
     </select>
   )
 };
-
-export default SelectDropdown;

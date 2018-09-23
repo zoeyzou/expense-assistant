@@ -7,25 +7,17 @@ import ExpensesTable from './ExpensesTable/ExpensesTable';
 import Pagination from './Pagination/Pagination';
 
 const Expenses = (props) => {
-  const columns = ['Date', 'Employee', 'Amount', 'More'];
-  const title = 'All Expenses';
-  const defaultSelect = 'All Currency';
+
+  // const defaultSelect = 'All Currency';
 
   return (
     <Layout
       header={
-        <ExpensesHeader
-          title={title}
-          options={[...new Set((props.expenses.map(expense => expense.amount.currency)).concat([defaultSelect]))]}
-          defaultOption={defaultSelect}
-          theme="major"
-          filterByName={props.nameFilter}
-        />
+        <ExpensesHeader />
       }
       footer={<Pagination />}
     >
       <ExpensesTable
-        columns={columns}
         expenses={props.expenses}
       />
     </Layout>

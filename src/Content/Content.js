@@ -11,39 +11,95 @@ import { ExpensesContext } from '../Contexts/ExpensesContexts';
 export class Content extends Component {
 
   state = {
-    limit: 30,
-    offset: 0,
+    pageLimit: 10,
+    pageOffset: 0,
     isLoading: true,
     expenses: [],
+    filteredExpenses: null,
     total: 0,
 
-    data: ""
+    filter: '',
+    currency: 'All Currency',
   };
 
   componentDidMount() {
+    const url = `http://localhost:3000/expenses?limit=${this.state.pageLimit}&offset=${this.state.pageOffset}`;
+    this.getAndFilterExpensesFromApi(url);
+  };
+
+  getAndFilterExpensesFromApi(url) {
     this.setState({isLoading: true});
-    axios.get(`http://localhost:3000/expenses?limit=${this.state.limit}&offset=${this.state.offset}`)
+    axios.get(url)
       .then(response => {
-        console.log(response.data.expenses);
-        this.setState({expenses: response.data.expenses, isLoading: false, total: response.data.total});
-        
+        this.setState(prevState => ({
+          expenses: response.data.expenses,
+          filteredExpenses: this.filterExpensesHandler(response.data.expenses, prevState.filter, prevState.currency),
+          isLoading: false,
+          total: response.data.total
+        }));
       });
-  };
+  }
 
-  nameFilterHandler = () => {
-    console.log('name changed');
-  };
+  filterExpensesHandler(expenses, keyword, currency) {
+    return expenses
+      .filter(expense => (
+        !keyword ||
+        `${expense.user.first} ${expense.user.last}`
+          .toLowerCase()
+          .includes(keyword.toLowerCase())
+      ))
+      .filter(expense => (
+        currency === 'All Currency' ||
+        expense.amount.currency === currency
+      ))
+  }
 
+  changePageRowsHandler(newPageRow) {
+    const url = `http://localhost:3000/expenses?limit=${newPageRow}&offset=${this.state.pageOffset}`;
+    this.getAndFilterExpensesFromApi(url);
+  }
+  
   render() {
-    console.log(this.state.total);
-    const { expenses, isLoading, total } = this.state;
+    const {
+      pageLimit,
+      pageOffset,
+      expenses,
+      filteredExpenses,
+      isLoading,
+      total,
+      filter,
+      currency,
+    } = this.state;
 
     if (isLoading) {
       return <p>Loading...</p>
     }
 
     return (
-      <ExpensesContext.Provider value={{data: this.state.data, changeData: (newData) => this.setState({ data: newData })}}>
+      <ExpensesContext.Provider value={
+        {
+          filter: filter,
+          currency: currency,
+          filteredExpenses: filteredExpenses || expenses,
+          pageLimit: pageLimit,
+          isLoading: isLoading,
+          changeFilter: (keyword) => this.setState({
+            filter: keyword,
+            filteredExpenses: this.filterExpensesHandler(expenses, keyword, currency)
+          }),
+          currencyOptions: [...new Set((expenses.map(expense => expense.amount.currency)).concat(['All Currency']))],
+          changeCurrency: (newCurrency) => this.setState({
+            currency: newCurrency,
+            filteredExpenses: this.filterExpensesHandler(expenses, filter, newCurrency)
+          }),
+          changePageRows: (newPageRows) => {
+            this.changePageRowsHandler(newPageRows);
+            this.setState({
+              pageLimit: newPageRows
+            });
+          },
+        }
+      }>
         <div className={styles.Content}>
           <Switch>
             <Route exact path="/" render={p => (

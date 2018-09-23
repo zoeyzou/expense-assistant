@@ -8,9 +8,10 @@
 
 .nameInput {
   font-size: 16px;
+  font-family: var(--content-font);
   padding: 5px 10px;
   height: 20px;
-  color: var(--button-background);
+  width: 200px;
   border: none;
   background: none;
   border-bottom: 1px solid grey;
