@@ -18,8 +18,8 @@ export class Content extends Component {
     filteredExpenses: null,
     total: 0,
 
-    filter: '',
-    currency: 'All Currency',
+    filter: null,
+    currency: 'All Currency'
   };
 
   componentDidMount() {

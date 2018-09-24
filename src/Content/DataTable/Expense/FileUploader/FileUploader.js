@@ -7,8 +7,8 @@ const FileUploader = (props) => {
     <React.Fragment>
       <span>{props.title}</span>
       <input type="file" name="file" id="file" className={styles.input} />
-      <label for="file" className={styles.FileUploader}>Choose a file</label>
-      <label>file name</label>
+      <label htmlFor="file" className={styles.FileUploader}>Choose a file AND upload</label>
+      <label></label>
     </React.Fragment>
     
   )

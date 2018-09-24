@@ -6,7 +6,6 @@ import styles from './TableBody.css';
 import infoIcon from '../../../../../asset/info1.png';
 
 const TableBody = (props) => {
-  console.log(props);
   const createRows = (expenses) => expenses
     .map((expense, index) => (
       <tr key={expense.id} className={styles.bodyRow}>
@@ -22,15 +21,13 @@ const TableBody = (props) => {
       </tr>
     ));
   return (
-
-      <ExpensesContext.Consumer>
-        {context => (
-          <tbody className={styles.TableBody}>
-            {createRows(context.filteredExpenses)}
-          </tbody>
-        )}
-      </ExpensesContext.Consumer>
-
+    <ExpensesContext.Consumer>
+      {context => (
+        <tbody className={styles.TableBody}>
+          {createRows(context.filteredExpenses)}
+        </tbody>
+      )}
+    </ExpensesContext.Consumer>
   )
 };
 

@@ -2,9 +2,9 @@ import React from 'react';
 
 import styles from './Button.css';
 
-const Button = ({display, customStyle}) => {
+const Button = ({display, customStyle, onClick}) => {
   return (
-    <button className={`${styles.Button} ${customStyle}`}>{display}</button>
+    <button type='button' onClick={onClick} className={`${styles.Button} ${customStyle}`}>{display}</button>
   )
 };
 
