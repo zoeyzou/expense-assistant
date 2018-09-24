@@ -1,25 +1,25 @@
-import React, {Component} from 'react';
-
-import styles from './FileUploader.css';
+import React from 'react';
 import ReactDropzone from 'react-dropzone';
 
-class FileUploader extends Component {
-  state = {
-    files: []
-  }
+import styles from './FileUploader.css';
+import { ExpenseContext } from '../../../../Contexts/ExpenseContext';
 
-  onDrop = (files) => {
-    files.forEach(file => console.log(file));
-  }
 
-  onPreviewDrop = (files) => {
+const FileUploader = (props) => {
+
+  // onDrop = (files) => {
+  //   files.forEach(file => console.log(file));
+  // }
+
+  const onDrop = (files) => {
     console.log(files[0]);
     this.setState({
       files: this.state.files.concat(files),
      });
   }
 
-  previewImg = (files) => {
+  const previewImg = (files) => {
+    console.log(files);
     if (files.length > 0) {
       return (
         <div>
@@ -36,24 +36,31 @@ class FileUploader extends Component {
     }
   }
 
-  render () {
-
-    return (
-    <React.Fragment>
-      <span>{this.props.title} </span>
-      <ReactDropzone
-        className={styles.drop}
-        accept="image/*"
-        onDrop={this.onPreviewDrop}
-      >
-        <span><i class="fas fa-upload"></i> Upload receipts</span>
-      </ReactDropzone>
-      {this.previewImg(this.state.files)}
-    </React.Fragment>
-
-    
+  return (
+    <ExpenseContext.Consumer>
+      {
+        context => (
+          <React.Fragment>
+            <span>{props.title} </span>
+            <ReactDropzone
+              className={styles.drop}
+              accept="image/*"
+              onDrop={(files) => context.onFileDrop(files)}
+            >
+              <span><i className="fas fa-upload"></i> Upload receipts</span>
+            </ReactDropzone>
+            {/* <input type="file" name="uploadedFile" onClick={(files) => context.onFileDrop(files)} /> */}
+            {context.files.length ?
+              previewImg(context.addedFiles.concat(context.addedFiles)) :
+              previewImg(context.addedFiles)
+            }
+          </React.Fragment>
+        )
+      }
+      
+    </ExpenseContext.Consumer>
   )
-    }
+
 };
 
 export default FileUploader;

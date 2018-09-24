@@ -28,7 +28,9 @@ class Expense extends Component {
     isLoading: true,
     expense: {},
     comment: '',
-    newComment: ''
+    newComment: '',
+    files: [],
+    addedFiles: []
   };
 
   changeCommentHandler = (newComment) => {
@@ -47,13 +49,39 @@ class Expense extends Component {
       this.setState({expense: expense, comment: expense.comment});
     })
   }
+
+  saveExpenseHandler = () => {
+    const { id } = this.props;
+    if (this.state.newComment) {
+      Request({
+        method: 'post',
+        url: `/expenses/${id}`,
+        data: {comment: this.state.newComment}
+      }).then((expense) => {
+        this.setState({expense: expense, comment: expense.comment});
+      })
+    }
+    if (this.state.addedFiles.length) {
+      console.log(this.state.addedFiles);
+      Request({
+        method: 'post',
+        url: `/expenses/${id}/receipts`,
+        data: {files: {receipt: this.state.addedFiles[0]}}
+      }).then((expense) => {
+        this.setState({expense: expense, files: expense.receipts});
+      })
+    }
+  }
   
   goBackHandler = () => {
     this.props.history.goBack();
   }
 
-  uploadFileHandler = () => {
-
+  fileDropHandler = (files) => {
+    console.log(files[0]);
+    this.setState({
+      addedFiles: this.state.addedFiles.concat(files),
+     });
   }
 
   render() {
@@ -61,7 +89,9 @@ class Expense extends Component {
       expense,
       isLoading,
       comment,
-      newComment
+      newComment,
+      files,
+      addedFiles
     } = this.state;
 
     if (isLoading) {
@@ -74,9 +104,12 @@ class Expense extends Component {
           expense: expense,
           comment: comment,
           newComment: newComment || comment,
+          files: files,
+          addedFiles: addedFiles || files,
           changeComment: (newComment) => this.changeCommentHandler(newComment),
-          saveComment: () => this.saveCommentHandler(),
-          goBack: () => this.goBackHandler()
+          saveComment: () => this.saveExpenseHandler(),
+          goBack: () => this.goBackHandler(),
+          onFileDrop: (files) => this.fileDropHandler(files)
         }
       }>
         <Layout
