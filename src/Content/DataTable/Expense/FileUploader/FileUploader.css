@@ -1,28 +1,27 @@
 @import url('../../../../common_styles/font.css');
 @import url('../../../../common_styles/color.css');
 
-.FileUploader {
+.drop {
+  display: inline-block;
+  border-width: 2px;
+  border-color: rgb(102, 102, 102);
+  border-style: dashed;
   font-weight: 700;
   color: var(--menu-background);
   border: 2px dashed var(--menu-background);
   border-radius: 4px;
   padding: 4px 8px;
-  display: inline-block;
   transition: all .2s ease;
-  margin-right: 10px;
 }
 
-.input {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
+.imgPreview {
+  display: 'inline-block';
+  margin: 10px;
+  height: 100px;
 }
 
-.input:focus + label,
-.input + label:hover {
+.drop:focus,
+.drop:hover {
   background-color: var(--menu-background);
   color: var(--primary);
   cursor: pointer;
