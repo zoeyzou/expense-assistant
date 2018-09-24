@@ -112,7 +112,8 @@ export class Content extends Component {
           changePageRows: (newPageRows) => {
             this.changePageRowsHandler(newPageRows);
             this.setState({
-              pageLimit: newPageRows
+              pageLimit: newPageRows,
+              pageOffset: 0
             });
           },
           changePage: (pageChange) => this.changePageHandler(pageChange)

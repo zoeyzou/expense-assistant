@@ -26,6 +26,9 @@ const Pagination = (props) => {
                   theme='minor'
                   />
               </div>
+              <div>
+                <span>{context.pageOffset + 1} / {Math.ceil(context.totalExpenses / context.pageLimit) || 1} pages</span>
+              </div>
               <div className={styles.arrows}>
                 <div
                   className={!context.pageOffset ? styles.hidden : ''}
@@ -34,7 +37,9 @@ const Pagination = (props) => {
                   <i className="fas fa-angle-left"></i>
                 </div>
                 <div
-                  className={context.pageOffset === Math.ceil(context.totalExpenses / 10) ? styles.hidden : ''}
+                  className={
+                      (context.pageOffset + 1) === Math.ceil(context.totalExpenses / context.pageLimit) ?styles.hidden : ''
+                  }
                   onClick={() => context.changePage('next')}
                 >
                   <i className="fas fa-angle-right"></i>
