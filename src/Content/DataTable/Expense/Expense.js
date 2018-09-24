@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { Request } from '../../../AxiosRequest';
 import { withRouter } from 'react-router-dom';
 import { ExpenseContext } from '../../../Contexts/ExpenseContext';
 
@@ -16,10 +16,12 @@ class Expense extends Component {
   componentDidMount() {
     const { id } = this.props;
 
-    axios.get(`http://localhost:3000/expenses/${id}`)
-      .then((res) => {
-        this.setState({expense: res.data, isLoading: false, comment: res.data.comment});
-      });
+    Request({
+      method: 'get',
+      url: `/expenses/${id}`
+    }).then((expense) => {
+      this.setState({expense: expense, isLoading: false, comment: expense.comment});
+    })
   }
 
   state = {
@@ -37,15 +39,21 @@ class Expense extends Component {
 
   saveCommentHandler = () => {
     const { id } = this.props;
-    axios.post(`http://localhost:3000/expenses/${id}`, {comment: this.state.newComment})
-      .then((res) => {
-        console.log(res);
-        this.setState({expense: res.data, comment: res.data.comment})
-      })
+    Request({
+      method: 'post',
+      url: `/expenses/${id}`,
+      data: {comment: this.state.newComment}
+    }).then((expense) => {
+      this.setState({expense: expense, comment: expense.comment});
+    })
   }
   
   goBackHandler = () => {
     this.props.history.goBack();
+  }
+
+  uploadFileHandler = () => {
+
   }
 
   render() {

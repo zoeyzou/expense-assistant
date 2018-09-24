@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+import { Request } from '../AxiosRequest';
 import styles from './Content.css';
 import Home from './Home/Home';
 import Expense from './DataTable/Expense/Expense';
@@ -23,21 +23,24 @@ export class Content extends Component {
   };
 
   componentDidMount() {
-    const url = `http://localhost:3000/expenses?limit=${this.state.pageLimit}&offset=${this.state.pageOffset}`;
-    this.getAndFilterExpensesFromApi(url);
+    const path = `/expenses?limit=${this.state.pageLimit}&offset=${this.state.pageOffset}`;
+    this.getAndFilterExpensesFromApi(path);
   };
 
-  getAndFilterExpensesFromApi(url) {
+  getAndFilterExpensesFromApi(path) {
     this.setState({isLoading: true});
-    axios.get(url)
-      .then(response => {
-        this.setState(prevState => ({
-          expenses: response.data.expenses,
-          filteredExpenses: this.filterExpensesHandler(response.data.expenses, prevState.filter, prevState.currency),
-          isLoading: false,
-          total: response.data.total
-        }));
-      });
+    Request({
+      method: 'get',
+      url: path,
+    }).then((res) => {
+      console.log(('expenses'), res)
+      this.setState(prevState => ({
+        expenses: res.expenses,
+        filteredExpenses: this.filterExpensesHandler(res.expenses, prevState.filter, prevState.currency),
+        isLoading: false,
+        total: res.total
+      }));
+    })
   }
 
   filterExpensesHandler(expenses, keyword, currency) {
@@ -55,8 +58,8 @@ export class Content extends Component {
   }
 
   changePageRowsHandler(newPageRow) {
-    const url = `http://localhost:3000/expenses?limit=${newPageRow}&offset=${this.state.pageOffset}`;
-    this.getAndFilterExpensesFromApi(url);
+    const path = `/expenses?limit=${newPageRow}&offset=${this.state.pageOffset}`;
+    this.getAndFilterExpensesFromApi(path);
   }
 
   changePageHandler(action) {
@@ -68,8 +71,8 @@ export class Content extends Component {
         pageOffset: prevState.pageOffset + pageChange
       }), 
       () => {
-        const url = `http://localhost:3000/expenses?limit=${this.state.pageLimit}&offset=${this.state.pageOffset}`;
-        this.getAndFilterExpensesFromApi(url);
+        const path = `/expenses?limit=${this.state.pageLimit}&offset=${this.state.pageOffset}`;
+        this.getAndFilterExpensesFromApi(path);
       }
     )
   }
