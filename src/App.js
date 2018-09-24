@@ -5,7 +5,7 @@ import styles from './App.css';
 import Menu from './Menu/Menu';
 import { Content } from './Content/Content';
 
-class App extends Component {
+export class App extends Component {
   render() {
     return (
       <BrowserRouter>
@@ -18,4 +18,3 @@ class App extends Component {
   }
 }
 
-export default App;
